@@ -9,10 +9,10 @@
 // }
 
 // class _DynamicEventState extends State<DynamicEvent> {
-//   late Map<DateTime, List<dynamic>> _events;
-//   late List<dynamic> _selectedEvents;
-//   late TextEditingController _eventController;
-//   late SharedPreferences prefs;
+//   Map<DateTime, List<dynamic>> _events;
+//   List<dynamic> _selectedEvents;
+//   TextEditingController _eventController;
+//   SharedPreferences prefs;
 
 //   @override
 //   void initState() {

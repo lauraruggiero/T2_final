@@ -25,7 +25,7 @@ class Holiday {
   final String date;
   final String name;
 
-  Holiday({required this.date, required this.name});
+  Holiday({@required this.date, @required this.name});
 
   factory Holiday.fromJson(Map<String, dynamic> json) {
     return Holiday(
@@ -36,9 +36,9 @@ class Holiday {
 }
 
 class MyHolidayList extends StatelessWidget {
-  late final Future<List<Holiday>> holidayList;
+  final Future<List<Holiday>> holidayList;
 
-  MyHolidayList({required this.holidayList});
+  MyHolidayList({@required this.holidayList});
 
   @override
   Widget build(BuildContext context) {
@@ -51,7 +51,7 @@ class MyHolidayList extends StatelessWidget {
           future: holidayList,
           builder: (context, snapshot) {
             if (snapshot.hasData) {
-              List<Holiday> holidayList = snapshot.data!;
+              List<Holiday> holidayList = snapshot.data;
               return ListView.builder(
                   itemBuilder: (BuildContext context, int index) {
                     var text = holidayList[index].name;

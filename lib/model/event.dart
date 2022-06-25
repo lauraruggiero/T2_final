@@ -1,32 +1,33 @@
 import 'package:flutter/foundation.dart';
 
 class Event {
-  late String title;
-  int? eventId;
-  int? userId;
+  String title;
+  int eventId;
+  String userId;
+  DateTime date;
 
-  Event({required this.title, this.eventId, this.userId});
-
-  // @override
-  // bool operator ==(Object other) => other is Event && title == other.title;
-
-  // @override
-  // int get hashCode => super.hashCode;
+  Event({@required this.title, this.eventId, this.userId, this.date});
 
   @override
   String toString() => title;
 
-  Event.fromJson(Map<String, dynamic> json) {
-    eventId = json['event_id'];
-    userId = json['user_id'];
-    title = json['title'];
-  }
+  // Event.fromDatabaseJson(Map<String, dynamic> json) {
+  //   eventId = json['event_id'];
+  //   userId = json['user_id'];
+  //   title = json['title'];
+  // }
 
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['event_id'] = this.eventId;
-    data['user_id'] = this.userId;
-    data['title'] = this.title;
-    return data;
-  }
+  factory Event.fromDatabaseJson(Map<String, dynamic> json) => Event(
+        eventId: json['event_id'],
+        userId: json['user_id'],
+        title: json['title'],
+        date: DateTime.parse(json['date']),
+      );
+
+  Map<String, dynamic> toDatabaseJson() => {
+        "event_id": eventId,
+        "user_id": userId,
+        "title": title,
+        "date": date.toString(),
+      };
 }

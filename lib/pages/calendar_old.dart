@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:table_calendar/table_calendar.dart';
-//import '../utils.dart';
 import '../model/event.dart';
 
-class CalendarTest extends StatefulWidget {
+class Calendar extends StatefulWidget {
   @override
-  _CalendarTestState createState() => _CalendarTestState();
+  _CalendarState createState() => _CalendarState();
 }
 
-class _CalendarTestState extends State<CalendarTest> {
-  late Map<DateTime, List<Event>> selectedEvents;
+class _CalendarState extends State<Calendar> {
+  Map<DateTime, List<Event>> selectedEvents;
   CalendarFormat _calendarFormat = CalendarFormat.month;
   DateTime _focusedDay = DateTime.utc(
       DateTime.now().year, DateTime.now().month, DateTime.now().day, 0, 0, 0);
@@ -71,7 +70,7 @@ class _CalendarTestState extends State<CalendarTest> {
             onPageChanged: (focusedDay) {
               _focusedDay = focusedDay;
             },
-            eventLoader: _getEventsForDay,
+            eventLoader: _getEventsForDay, //
           ),
           ..._getEventsForDay(_selectedDay).map(
             (Event event) => ListTile(
@@ -86,21 +85,21 @@ class _CalendarTestState extends State<CalendarTest> {
         onPressed: () => showDialog(
             context: context,
             builder: (context) => AlertDialog(
-                    title: Text("Add Event"),
+                    title: const Text("Add Event"),
                     content: TextFormField(controller: _eventController),
                     actions: [
                       TextButton(
-                          child: Text("Cancel"),
+                          child: const Text("Cancel"),
                           onPressed: () => Navigator.pop(context)),
                       TextButton(
-                          child: Text("Ok"),
+                          child: const Text("Ok"),
                           onPressed: () {
                             if (_eventController.text.isEmpty) {
                               //Navigator.pop(context);
                               //return;
                             } else {
                               if (selectedEvents[_selectedDay] != null) {
-                                selectedEvents[_selectedDay]!
+                                selectedEvents[_selectedDay]
                                     .add(Event(title: _eventController.text));
                               } else {
                                 selectedEvents[_selectedDay] = [

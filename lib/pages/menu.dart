@@ -6,10 +6,10 @@ import 'package:flutter/material.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:table_calendar/table_calendar.dart';
 
-import 'tryout.dart';
-import 'checklist.dart';
+import 'calendar_old.dart';
 import 'holidays_list.dart';
-import 'test_db.dart';
+//import 'test_db.dart';
+import 'todolist.dart';
 
 class StartPage extends StatefulWidget {
   @override
@@ -40,10 +40,10 @@ class _StartPageState extends State<StartPage> {
             ),
             const SizedBox(height: 20.0),
             ElevatedButton(
-              child: Text('Checklist'),
+              child: Text('To-do List'),
               onPressed: () => Navigator.push(
                 context,
-                MaterialPageRoute(builder: (_) => MyList()),
+                MaterialPageRoute(builder: (_) => TodoList()),
               ),
             ),
             const SizedBox(height: 12.0),
@@ -51,7 +51,7 @@ class _StartPageState extends State<StartPage> {
               child: Text('Tryout'),
               onPressed: () => Navigator.push(
                 context,
-                MaterialPageRoute(builder: (_) => CalendarTest()),
+                MaterialPageRoute(builder: (_) => Calendar()),
               ),
             ),
             const SizedBox(height: 20.0),
@@ -63,14 +63,14 @@ class _StartPageState extends State<StartPage> {
                     builder: (_) => MyHolidayList(holidayList: fetchInfo())),
               ),
             ),
-            const SizedBox(height: 20.0),
-            ElevatedButton(
-              child: Text('Test DB'),
-              onPressed: () => Navigator.push(
-                context,
-                MaterialPageRoute(builder: (_) => MyEventsList()),
-              ),
-            ),
+            // const SizedBox(height: 20.0),
+            // ElevatedButton(
+            //   child: Text('Test DB'),
+            //   onPressed: () => Navigator.push(
+            //     context,
+            //     MaterialPageRoute(builder: (_) => MyEventsList()),
+            //   ),
+            // ),
           ],
         ),
       ),

@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'TableCalendar Example',
       theme: ThemeData(
-          primarySwatch: Colors.amber,
+          primarySwatch: Colors.indigo,
           brightness: Brightness.light,
           fontFamily: 'Nexa',
           textTheme: const TextTheme(
@@ -81,7 +81,7 @@ class _LoginPageState extends State<LoginPage> {
               },
               child: Text(
                 'Forgot Password',
-                style: TextStyle(color: Colors.blueAccent, fontSize: 15),
+                style: TextStyle(color: Colors.indigoAccent, fontSize: 15),
               ),
             ),
             Container(
