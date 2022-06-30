@@ -1,0 +1,50 @@
+{
+    "language": "English",
+    "@language":{
+        "description": "The current language"
+    },
+    "title": "My Calendar",
+    "@title":{
+        "description": "The aplication title" 
+    },
+    "homePageTitle": "Dashboard",
+    "@homePageTitle":{
+        "description": "Home page title"
+    },
+    "todaysEvents": "Today's events", 
+    "@todaysEvents":{
+        "description": "Events of today"
+    },
+    "calendarButton": "Calendar", 
+    "@calendarButton":{
+        "description": "Calendar button text"
+    },
+    "holidaysButton": "Holidays", 
+    "@holidaysButton":{
+        "description": "Holidays button text"
+    },
+    "todoButton": "To do List",
+    "@todoButton":{
+        "description": "To do List button text"
+    },
+    "loading": "Loading...",
+    "@loading":{
+        "description": "Loading message"
+    },
+    "deleting": "Deleting",
+    "@deleting":{
+        "description": "Deleting message"
+    },
+    "noTodoMessage": "Start adding Todo...",
+    "@noTodoMessage":{
+        "description": "Start Todo Message"
+    },
+    "noEventMessage": "No events scheduled for today :)",
+    "@noEventMessage":{
+        "description": "No events Message"
+    },
+    "logout": "Log Out",
+    "@logout":{
+        "description": "Log Out"
+    }
+}

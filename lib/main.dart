@@ -1,17 +1,43 @@
+// ignore_for_file: prefer_const_constructors
+
+import 'dart:math';
+
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/date_symbol_data_local.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:path_provider/path_provider.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+//import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 
-import 'pages/menu.dart';
+import 'pages/login_page.dart';
+import 'l10n/l10n.dart';
 
 void main() {
-  initializeDateFormatting().then((_) => runApp(MyApp()));
+  // FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
+  //     FlutterLocalNotificationsPlugin();
+  // var initializationSettingsAndroid = AndroidInitializationSettings('app_icon');
+  // var initializationSettingsIOS = IOSInitializationSettings(
+  //     onDidReceiveLocalNotification: onDidReceiveLocalNotification);
+  // var initializationSettings = InitializationSettings(
+  //     android: initializationSettingsAndroid, iOS: initializationSettingsIOS);
+  // flutterLocalNotificationsPlugin.initialize(initializationSettings,
+  //     onSelectNotification: onSelectNotification);
+
+  runApp(MyApp());
+  initializeDateFormatting();
+  //initializeDateFormatting().then((_) => runApp(MyApp()));
+
+  //await _showNotification(flutterLocalNotificationsPlugin);
 }
 
 class MyApp extends StatelessWidget {
+  static final String title = "MyCalendar App";
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'TableCalendar Example',
+      title: title,
       theme: ThemeData(
           primarySwatch: Colors.indigo,
           brightness: Brightness.light,
@@ -19,95 +45,66 @@ class MyApp extends StatelessWidget {
           textTheme: const TextTheme(
             headline1: TextStyle(fontSize: 72.0, fontWeight: FontWeight.bold),
           )),
+      supportedLocales: L10n.all,
+      localizationsDelegates: [
+        AppLocalizations.delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate
+      ],
       debugShowCheckedModeBanner: false,
       home: LoginPage(),
     );
   }
 }
 
-class LoginPage extends StatefulWidget {
-  @override
-  _LoginPageState createState() => _LoginPageState();
-}
+// Future<void> _showNotification(flutterLocalNotificationsPlugin) async {
+//   print("show notification function");
+//   var androidPlatformChannelSpecifics = AndroidNotificationDetails(
+//       'your channel id', 'your channel name',
+//       importance: Importance.max, priority: Priority.high, ticker: 'ticker');
+//   var iOSPlatformChannelSpecifics = IOSNotificationDetails();
+//   var platformChannelSpecifics = NotificationDetails(
+//       android: androidPlatformChannelSpecifics,
+//       iOS: iOSPlatformChannelSpecifics);
+//   await flutterLocalNotificationsPlugin.show(
+//       0, 'plain title', 'plain body', platformChannelSpecifics,
+//       payload: 'item x');
+// }
 
-class _LoginPageState extends State<LoginPage> {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.white,
-      appBar: AppBar(
-        title: Text("Login Page"),
-      ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: <Widget>[
-            Padding(
-              padding: const EdgeInsets.only(top: 60.0),
-              child: Center(
-                child: Container(
-                    width: 200,
-                    height: 150,
-                    /*decoration: BoxDecoration(
-                        color: Colors.red,
-                        borderRadius: BorderRadius.circular(50.0)),*/
-                    child: Icon(Icons.calendar_month_outlined)),
-              ),
-            ),
-            Padding(
-              //padding: const EdgeInsets.only(left:15.0,right: 15.0,top:0,bottom: 0),
-              padding: EdgeInsets.symmetric(horizontal: 15),
-              child: TextField(
-                decoration: InputDecoration(
-                    border: OutlineInputBorder(),
-                    labelText: 'Email',
-                    hintText: 'Enter email as abc@gmail.com'),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(
-                  left: 15.0, right: 15.0, top: 15, bottom: 0),
-              //padding: EdgeInsets.symmetric(horizontal: 15),
-              child: TextField(
-                obscureText: true,
-                decoration: InputDecoration(
-                    border: OutlineInputBorder(),
-                    labelText: 'Password',
-                    hintText: 'Enter secure password'),
-              ),
-            ),
-            FlatButton(
-              onPressed: () {
-                //FORGOT PASSWORD SCREEN
-              },
-              child: Text(
-                'Forgot Password',
-                style: TextStyle(color: Colors.indigoAccent, fontSize: 15),
-              ),
-            ),
-            Container(
-              height: 50,
-              width: 250,
-              decoration: BoxDecoration(
-                  color: Colors.blueAccent,
-                  borderRadius: BorderRadius.circular(20)),
-              child: FlatButton(
-                onPressed: () {
-                  Navigator.push(
-                      context, MaterialPageRoute(builder: (_) => StartPage()));
-                },
-                child: Text(
-                  'Login',
-                  style: TextStyle(color: Colors.white, fontSize: 25),
-                ),
-              ),
-            ),
-            SizedBox(
-              height: 130,
-            ),
-            Text('New User? Create Account')
-          ],
-        ),
-      ),
-    );
-  }
-}
+// Future<void> onDidReceiveLocalNotification(
+//     int id, String title, String body, String payload) async {
+//   // display a dialog with the notification details, tap ok to go to another page
+//   // await showDialog(
+//   //   //context: context,
+//   //   builder: (BuildContext context) => CupertinoAlertDialog(
+//   //     title: Text(title),
+//   //     content: Text(body),
+//   //     actions: [
+//   //       CupertinoDialogAction(
+//   //         isDefaultAction: true,
+//   //         child: Text('Ok'),
+//   //         onPressed: () async {
+//   //           Navigator.of(context, rootNavigator: true).pop();
+//   //           await Navigator.push(
+//   //             context,
+//   //             MaterialPageRoute(
+//   //               builder: (context) => SecondScreen(payload),
+//   //             ),
+//   //           );
+//   //         },
+//   //       )
+//   //     ],
+//   //   ),
+//   //)
+// }
+
+// Future<void> onSelectNotification(String payload) async {
+//   if (payload != null) {
+//     debugPrint('notification payload: ' + payload);
+//   }
+
+// await Navigator.push(
+//   context,
+//   MaterialPageRoute(builder: (context) => SecondScreen(payload)),
+// );
+//}

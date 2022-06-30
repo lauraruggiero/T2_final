@@ -1,0 +1,14 @@
+{
+    "language": "Português",
+    "title": "Meu Calendário",
+    "homePageTitle": "Painel",
+    "todaysEvents": "Eventos de hoje",
+    "calendarButton": "Calendário",
+    "calendarButton": "Feriados", 
+    "todoButton": "Tarefas",
+    "loading": "Carregando...",
+    "deleting": "Excluir",
+    "noTodoMessage": "Adicione uma tarefa...",
+    "noEventMessage": "Nenhum evento programado para hoje :)",
+    "logout": "Sair"
+}

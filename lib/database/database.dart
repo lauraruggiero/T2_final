@@ -21,7 +21,6 @@ class DatabaseProvider {
 
   createDatabase() async {
     Directory documentsDirectory = await getApplicationDocumentsDirectory();
-    //"ReactiveTodo.db is our database instance name
     String path = join(documentsDirectory.path, "CalendarAppDatabase.db");
 
     var database = await openDatabase(path,
@@ -29,7 +28,6 @@ class DatabaseProvider {
     return database;
   }
 
-  //This is optional, and only used for changing DB schema migrations
   void onUpgrade(Database database, int oldVersion, int newVersion) {
     if (newVersion > oldVersion) {}
   }
@@ -45,6 +43,7 @@ class DatabaseProvider {
         "user_id TEXT,"
         "title TEXT,"
         "date TEXT"
+        /*"time TEXT"*/
         ")");
   }
 }

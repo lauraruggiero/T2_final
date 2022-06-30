@@ -4,6 +4,8 @@ import '../model/event.dart';
 class EventRepository {
   final eventDao = EventDao();
 
+  Future getAllEvents() => eventDao.getAllEvents();
+
   Future getEventsForDay(DateTime day) => eventDao.getEventsForDay(day);
 
   Future insertEvent(Event event) => eventDao.createEvent(event);

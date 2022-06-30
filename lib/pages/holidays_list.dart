@@ -2,7 +2,6 @@ import 'dart:async';
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'dart:developer';
 
 Future<List<Holiday>> fetchInfo() async {
   Uri url = Uri.parse('https://date.nager.at/api/v3/PublicHolidays/2022/BR');

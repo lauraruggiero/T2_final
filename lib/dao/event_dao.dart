@@ -11,6 +11,18 @@ class EventDao {
     return result;
   }
 
+  Future<List<Event>> getAllEvents() async {
+    final db = await dbProvider.database;
+
+    List<Map<String, dynamic>> result;
+    result = await db.query(eventTABLE);
+
+    List<Event> events = result.isNotEmpty
+        ? result.map((item) => Event.fromDatabaseJson(item)).toList()
+        : [];
+    return events;
+  }
+
   Future<List<Event>> getEventsForDay(DateTime day) async {
     final db = await dbProvider.database;
 
@@ -28,23 +40,15 @@ class EventDao {
     final db = await dbProvider.database;
 
     var result = await db.update(eventTABLE, event.toDatabaseJson(),
-        where: "id = ?", whereArgs: [event.eventId]);
+        where: "event_id = ?", whereArgs: [event.eventId]);
 
     return result;
   }
 
   Future<int> deleteEvent(int id) async {
     final db = await dbProvider.database;
-    var result = await db.delete(eventTABLE, where: 'id = ?', whereArgs: [id]);
+    var result =
+        await db.delete(eventTABLE, where: 'event_id = ?', whereArgs: [id]);
     return result;
   }
-
-  // Future deleteAllEvents() async {
-  //   final db = await dbProvider.database;
-  //   var result = await db.delete(
-  //     eventTABLE,
-  //   );
-
-  //   return result;
-  // }
 }

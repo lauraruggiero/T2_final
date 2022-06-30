@@ -36,11 +36,16 @@ dependencies:
   http: ^0.13.4
   sqflite: ^2.0.2+1
   path_provider: ^2.0.11
-  shared_preferences: ^0.5.4+5
+  shared_preferences: ^2.0.15
+  flutter_local_notifications: ^9.6.1
+
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  flutter_localizations: 
+    sdk: flutter
+  intl: ^0.17.0
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
@@ -54,10 +59,7 @@ dev_dependencies:
 
 # The following section is specific to Flutter packages.
 flutter:
-
-  # The following line ensures that the Material Icons font is
-  # included with your application, so that you can use the icons in
-  # the material Icons class.
+  generate: true
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:

@@ -320,7 +320,6 @@ class TodoList extends StatelessWidget {
                           todo.description,
                           style: TextStyle(
                               fontSize: 16.5,
-                              fontFamily: 'RobotoMono',
                               fontWeight: FontWeight.w500,
                               decoration: todo.isDone
                                   ? TextDecoration.lineThrough
